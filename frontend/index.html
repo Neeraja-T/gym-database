@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FitCore | Gym Management System</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <aside class="sidebar">
+        <div class="brand">
+            <div class="logo">FC</div>
+            <div>
+                <h2>FitCore</h2>
+                <small>GYM MANAGEMENT</small>
+            </div>
+        </div>
+
+        <nav>
+            <button class="nav-item active" data-page="dashboard">
+                🏠 Dashboard
+            </button>
+
+            <button class="nav-item" data-page="members">
+                👥 Members
+            </button>
+
+            <button class="nav-item" data-page="trainers">
+                🏋️ Trainers
+            </button>
+
+            <button class="nav-item" data-page="attendance">
+                📅 Attendance
+            </button>
+
+            <button class="nav-item" data-page="vitals">
+                ❤️ Vitals & Progress
+            </button>
+
+            <button class="nav-item" data-page="diet">
+                🥗 Diet Plans
+            </button>
+
+            <button class="nav-item" data-page="workouts">
+                💪 Workout Plans
+            </button>
+
+            <button class="nav-item" data-page="equipment">
+                ⚙️ Equipment
+            </button>
+        </nav>
+
+        <div class="sidebar-footer">
+            <span class="status-dot"></span>
+            Gym Database Connected
+        </div>
+    </aside>
+
+    <main class="main">
+
+        <header class="topbar">
+            <div>
+                <p class="subtitle">FITCORE / WORKSPACE</p>
+                <h1 id="pageTitle">Dashboard</h1>
+            </div>
+
+            <button id="themeToggle" class="theme-button">
+                🌙 Dark Mode
+            </button>
+        </header>
+
+        <!-- DASHBOARD -->
+        <section id="dashboard" class="page active">
+
+            <div class="welcome">
+                <p>YOUR GYM AT A GLANCE</p>
+                <h2>Train smarter. Manage better.</h2>
+                <p>Manage your gym data in one place.</p>
+            </div>
+
+            <div class="stats">
+
+                <div class="stat-card">
+                    <p>Total Members</p>
+                    <h2 id="memberCount">0</h2>
+                </div>
+
+                <div class="stat-card">
+                    <p>Total Trainers</p>
+                    <h2 id="trainerCount">0</h2>
+                </div>
+
+                <div class="stat-card">
+                    <p>Attendance Records</p>
+                    <h2 id="attendanceCount">0</h2>
+                </div>
+
+                <div class="stat-card">
+                    <p>Equipment Items</p>
+                    <h2 id="equipmentCount">0</h2>
+                </div>
+
+            </div>
+
+            <div class="card">
+                <h2>Recent Members</h2>
+
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Date of Birth</th>
+                                <th>Gender</th>
+                                <th>Trainer ID</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="recentMembers">
+                            <tr>
+                                <td colspan="5">Loading members...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- MEMBERS -->
+        <section id="members" class="page">
+
+            <div class="section-heading">
+                <div>
+                    <h2>Members</h2>
+                    <p>Manage gym members.</p>
+                </div>
+
+                <button class="primary-button" id="addMemberButton">
+                    + Add Member
+                </button>
+            </div>
+
+            <div class="card">
+
+                <input
+                    type="search"
+                    id="memberSearch"
+                    placeholder="Search members..."
+                >
+
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Date of Birth</th>
+                                <th>Gender</th>
+                                <th>Trainer ID</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="membersTable"></tbody>
+                    </table>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- TRAINERS -->
+        <section id="trainers" class="page">
+
+            <div class="section-heading">
+                <div>
+                    <h2>Trainers</h2>
+                    <p>Manage gym trainers.</p>
+                </div>
+
+                <button class="primary-button" id="addTrainerButton">
+                    + Add Trainer
+                </button>
+            </div>
+
+            <div class="card">
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Experience</th>
+                                <th>Gender</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="trainersTable"></tbody>
+                    </table>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- ATTENDANCE -->
+        <section id="attendance" class="page">
+
+            <div class="section-heading">
+                <div>
+                    <h2>Attendance</h2>
+                    <p>Track member attendance.</p>
+                </div>
+
+                <button class="primary-button" id="addAttendanceButton">
+                    + Record Attendance
+                </button>
+            </div>
+
+            <div class="card">
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Member ID</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="attendanceTable"></tbody>
+                    </table>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- VITALS -->
+        <section id="vitals" class="page">
+
+            <div class="section-heading">
+                <div>
+                    <h2>Vitals & Progress</h2>
+                    <p>Monitor member measurements.</p>
+                </div>
+
+                <button class="primary-button" id="addVitalsButton">
+                    + Add Record
+                </button>
+            </div>
+
+            <div class="card">
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Member ID</th>
+                                <th>Date</th>
+                                <th>Weight</th>
+                                <th>Height</th>
+                                <th>Progress</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="vitalsTable"></tbody>
+                    </table>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- DIET PLANS -->
+        <section id="diet" class="page">
+
+            <div class="section-heading">
+                <div>
+                    <h2>Diet Plans</h2>
+                    <p>Manage nutrition plans.</p>
+                </div>
+
+                <button class="primary-button" id="addDietButton">
+                    + Add Diet Plan
+                </button>
+            </div>
+
+            <div class="card">
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Diet Name</th>
+                                <th>Goal</th>
+                                <th>Duration</th>
+                                <th>Calories</th>
+                                <th>Member ID</th>
+                                <th>Trainer ID</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="dietTable"></tbody>
+                    </table>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- WORKOUT PLANS -->
+        <section id="workouts" class="page">
+
+            <div class="section-heading">
+                <div>
+                    <h2>Workout Plans</h2>
+                    <p>Manage training programs.</p>
+                </div>
+
+                <button class="primary-button" id="addWorkoutButton">
+                    + Add Workout
+                </button>
+            </div>
+
+            <div class="card">
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Workout Name</th>
+                                <th>Goal</th>
+                                <th>Difficulty</th>
+                                <th>Member ID</th>
+                                <th>Trainer ID</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="workoutsTable"></tbody>
+                    </table>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- EQUIPMENT -->
+        <section id="equipment" class="page">
+
+            <div class="section-heading">
+                <div>
+                    <h2>Equipment</h2>
+                    <p>Manage gym equipment.</p>
+                </div>
+
+                <button class="primary-button" id="addEquipmentButton">
+                    + Add Equipment
+                </button>
+            </div>
+
+            <div class="card">
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Equipment Name</th>
+                                <th>Exercise Purpose</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="equipmentTable"></tbody>
+                    </table>
+                </div>
+            </div>
+
+        </section>
+
+        <footer>
+            FitCore Gym Management System
+            <span>HTML · CSS · Java · MySQL</span>
+        </footer>
+
+    </main>
+
+    <!-- ADD RECORD DIALOG -->
+    <dialog id="recordDialog">
+
+        <form id="recordForm">
+
+            <h2 id="dialogTitle">Add Record</h2>
+
+            <div id="formFields"></div>
+
+            <p id="formError" class="error-message"></p>
+
+            <div class="dialog-actions">
+                <button type="button" id="cancelDialog">
+                    Cancel
+                </button>
+
+                <button type="submit" class="primary-button">
+                    Save Record
+                </button>
+            </div>
+
+        </form>
+
+    </dialog>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
